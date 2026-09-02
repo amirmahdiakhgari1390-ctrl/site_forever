@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
+
+    <title>تماس با ما | Forever Shop</title>
+
+    <meta name="description" content="تماس با فروشگاه فوراور - پشتیبانی ۲۴ ساعته">
+
+    <link rel="stylesheet" href="test_css.css">
+    <link rel="stylesheet" href="test_css2.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        /* هدر و منو موبایل — مثل صفحه اصلی */
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 16px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 9000;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,.06);
+        }
+        body.dark-mode .top-header { background: #111827; }
+
+        .logo span, .logo .logo-label {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #0c7a2d;
+            cursor: default;
+            user-select: none;
+            pointer-events: none;
+            text-decoration: none;
+        }
+        body.dark-mode .logo span,
+        body.dark-mode .logo .logo-label { color: #4ade80; }
+
+        .mobile-nav-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 2px solid #0c7a2d;
+            background: #fff;
+            border-radius: 10px;
+            color: #0c7a2d;
+            font-size: 1.25rem;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        body.dark-mode .mobile-nav-toggle {
+            background: #1f2937;
+            color: #4ade80;
+            border-color: #4ade80;
+        }
+
+        nav .menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 4px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav .menu > li > a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle { display: inline-flex; }
+            nav {
+                display: none;
+                width: 100%;
+                order: 10;
+                flex-basis: 100%;
+            }
+            nav.mobile-open { display: block; }
+            nav .menu {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 8px 0 12px;
+                gap: 0;
+            }
+            nav .menu > li > a {
+                padding: 14px 12px;
+                border-bottom: 1px solid #eee;
+                font-size: 1rem;
+            }
+            body.dark-mode nav .menu > li > a { border-color: #374151; }
+            nav .submenu {
+                position: static !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding-right: 12px;
+            }
+            .top-header { padding: 10px 12px; }
+        }
+        /* سه کارت تماس — وسط‌چین و مرتب */
+        .contact-info-section {
+            padding: 40px 16px 20px;
+        }
+        .contact-info-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 280px)) !important;
+            gap: 20px !important;
+            justify-content: center !important;
+            justify-items: stretch !important;
+            align-items: stretch !important;
+            max-width: 960px !important;
+            margin: 0 auto !important;
+            width: 100%;
+            padding: 0 12px;
+            box-sizing: border-box;
+        }
+        .contact-info-card {
+            width: 100% !important;
+            max-width: 280px !important;
+            margin: 0 auto !important;
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            box-sizing: border-box;
+        }
+        .contact-info-card .contact-icon {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 900px) {
+            .contact-info-grid {
+                grid-template-columns: repeat(2, minmax(0, 280px)) !important;
+            }
+        }
+        @media (max-width: 560px) {
+            .contact-info-grid {
+                grid-template-columns: minmax(0, 280px) !important;
+            }
+        }
+
+    .user-referral-box {
+        margin: 8px 14px 12px; padding: 12px 14px;
+        background: linear-gradient(135deg, #f0faf3, #e8f5e9);
+        border: 1px dashed #0c7a2d; border-radius: 12px; text-align: center;
+    }
+    body.dark-mode .user-referral-box { background: #10241a; border-color: #16a34a; }
+    .user-referral-box span { display: block; font-size: .75rem; color: #6b7280; margin-bottom: 6px; }
+    body.dark-mode .user-referral-box span { color: #9ca3af; }
+    .user-referral-box strong {
+        display: block; font-size: 1.05rem; font-weight: 900; color: #0c7a2d;
+        letter-spacing: 1px; direction: ltr;
+    }
+    body.dark-mode .user-referral-box strong { color: #4ade80; }
+
+</style>
+</head>
+
+<body>
+
+<!-- ===========================
+        HEADER — مثل صفحه اصلی
+=========================== -->
+<header role="banner">
+    <div class="top-header">
+
+        <!-- فقط برچسب — بدون لینک و بدون عملکرد -->
+        <div class="logo">
+            <span class="logo-label" title="Forever Shop" aria-label="Forever Shop">Forever Shop</span>
+        </div>
+
+        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منوی موبایل" aria-expanded="false" aria-controls="mainNav">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <nav id="mainNav" aria-label="منوی اصلی" role="navigation">
+            <ul class="menu">
+                <li>
+                    <a href="test_html2.html" id="homeNavLink">خانه</a>
+                </li>
+                <li>
+                    <a href="#">
+                        محصولات
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="immune.html">سیستم ایمنی</a></li>
+                        <li><a href="varsesh.html">ورزشی</a></li>
+                        <li><a href="#">نوشیدنی ها</a></li>
+                        <li><a href="#">محصولات زنبور عسل</a></li>
+                        <li><a href="#">مکمل های غذایی</a></li>
+                        <li><a href="#">دهان و دندان</a></li>
+                        <li><a href="#">مراقبت ازپوست</a></li>
+                        <li><a href="#">کرم ها</a></li>
+                    </ul>
+                </li>
+                <li><a href="hamkari.html">شرایط همکاری</a></li>
+                <li><a href="about.html">درباره ما</a></li>
+                <li><a href="contact.html">تماس با ما</a></li>
+            </ul>
+        </nav>
+
+        <!-- حساب کاربری -->
+        <div class="user-menu">
+            <a href="#" class="user-icon" id="userBtn" title="حساب کاربری" aria-label="حساب کاربری" aria-haspopup="true" aria-expanded="false">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            </a>
+            <div class="user-dropdown" id="userDropdown" role="menu" aria-label="منوی حساب کاربری">
+                <div class="user-dropdown-header">
+                    <div class="user-avatar">
+                        <i class="fa-solid fa-user" aria-hidden="true"></i>
+                    </div>
+                    <div class="user-info">
+                        <p id="userGreeting">سلام!</p>
+                        <a href="#" id="loginBtn">ورود | ثبت‌نام</a>
+                    </div>
+                </div>
+                <div class="user-dropdown-divider"></div>
+                <div class="user-referral-box" id="userReferralBox" style="display:none;">
+                    <span>کد معرف اختصاصی شما</span>
+                    <strong id="userReferralCodeDisplay">—</strong>
+                </div>
+                <ul class="user-dropdown-list">
+                    <li><a href="account.html#overview"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> داشبورد</a></li>
+                    <li><a href="account.html#orders"><i class="fa-solid fa-box" aria-hidden="true"></i> سفارش‌های من</a></li>
+                    <li><a href="account.html#wishlist"><i class="fa-solid fa-heart" aria-hidden="true"></i> علاقه‌مندی‌ها</a></li>
+                    <li><a href="account.html#addresses"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> آدرس‌های من</a></li>
+                    <li><a href="account.html#wallet"><i class="fa-solid fa-wallet" aria-hidden="true"></i> کیف پول</a></li>
+                    <li><a href="account.html#notifications"><i class="fa-solid fa-bell" aria-hidden="true"></i> اعلان‌ها</a></li>
+                </ul>
+                <div class="user-dropdown-divider"></div>
+                <a href="#" class="user-logout" id="userLogoutBtn">
+                    <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+                    خروج از حساب
+                </a>
+            </div>
+        </div>
+
+        <div class="header-icons">
+            <div class="settings-menu">
+                <a href="#" title="تنظیمات"><i class="fa-solid fa-gear"></i></a>
+                <ul class="settings-dropdown">
+                    <li><a href="#" data-theme="light"><i class="fa-solid fa-sun"></i> حالت روشن</a></li>
+                    <li><a href="#" data-theme="dark"><i class="fa-solid fa-moon"></i> حالت تاریک</a></li>
+                    <li><a href="#" data-theme="auto"><i class="fa-solid fa-circle-half-stroke"></i> خودکار</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<!-- ===========================
+        HERO - تماس با ما
+=========================== -->
+<section class="hero contact-hero">
+    <div class="hero-content">
+        <span class="hero-tag">📞 در خدمت شما هستیم</span>
+        <h1>تماس با ما</h1>
+        <p>
+            تیم پشتیبانی فوراور آماده پاسخگویی به سوالات شماست.
+            از طریق فرم تماس، تلفن، ایمیل یا شبکه‌های اجتماعی با ما در ارتباط باشید.
+        </p>
+    </div>
+</section>
+
+<!-- ===========================
+        کارت‌های اطلاعات تماس
+=========================== -->
+<section class="contact-info-section">
+    <div class="contact-info-grid">
+        <div class="contact-info-card">
+            <div class="contact-icon icon-phone">
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <h3>تماس تلفنی</h3>
+            <p>پاسخگویی ۲۴ ساعته</p>
+            <a href="tel:09123456789" class="contact-link">۰۹۱۲۳۴۵۶۷۸۹</a>
+            <a href="tel:02112345678" class="contact-link">۰۲۱-۱۲۳۴۵۶۷۸</a>
+        </div>
+        <div class="contact-info-card">
+            <div class="contact-icon icon-email">
+                <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <h3>ایمیل</h3>
+            <p>پاسخ در کمتر از ۲۴ ساعت</p>
+            <a href="mailto:info@forevershop.ir" class="contact-link">info@forevershop.ir</a>
+            <a href="mailto:support@forevershop.ir" class="contact-link">support@forevershop.ir</a>
+        </div>
+        <div class="contact-info-card">
+            <div class="contact-icon icon-clock">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <h3>ساعات کاری</h3>
+            <p>شنبه تا پنج‌شنبه</p>
+            <p class="contact-hours">۹:۰۰ تا ۱۸:۰۰</p>
+            <p class="contact-hours-sub">جمعه: تعطیل</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===========================
+        فرم تماس + اطلاعات جانبی
+=========================== -->
+<section class="contact-form-section">
+    <div class="contact-form-wrapper">
+        <div class="contact-form-box">
+            <div class="section-title-box">
+                <h2>ارسال پیام</h2>
+                <p>پیام خود را برای ما بنویسید، در اسرع وقت پاسخ می‌دهیم</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="contact-input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="نام و نام خانوادگی" required>
+                    </div>
+                    <div class="contact-input-group">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" placeholder="شماره تماس" pattern="[0-9]{11}" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="contact-input-group">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="ایمیل" required>
+                    </div>
+                    <div class="contact-input-group">
+                        <i class="fa-solid fa-tag"></i>
+                        <select required>
+                            <option value="">موضوع پیام</option>
+                            <option>سوال درباره محصولات</option>
+                            <option>پیگیری سفارش</option>
+                            <option>درخواست همکاری</option>
+                            <option>پشتیبانی فنی</option>
+                            <option>شکایات و پیشنهادات</option>
+                            <option>سایر موارد</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="contact-input-group full">
+                    <i class="fa-solid fa-message"></i>
+                    <textarea placeholder="متن پیام شما..." rows="6" required></textarea>
+                </div>
+                <label class="contact-checkbox">
+                    <input type="checkbox" required>
+                    <span>با <a href="#">قوانین و مقررات</a> سایت موافقم</span>
+                </label>
+                <button type="submit" class="contact-submit">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    ارسال پیام
+                </button>
+            </form>
+        </div>
+
+        <div class="contact-side-box">
+            <div class="side-card">
+                <h3><i class="fa-solid fa-headset"></i> پشتیبانی آنلاین</h3>
+                <p>تیم پشتیبانی ما آماده پاسخگویی به سوالات شماست.</p>
+                <a href="#" class="side-btn">
+                    <i class="fa-solid fa-comments"></i>
+                    شروع گفتگو
+                </a>
+            </div>
+            <div class="side-card social-card">
+                <h3><i class="fa-solid fa-share-nodes"></i> شبکه‌های اجتماعی</h3>
+                <p>ما را در شبکه‌های اجتماعی دنبال کنید</p>
+                <div class="contact-social">
+                    <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="side-card faq-card">
+                <h3><i class="fa-solid fa-circle-question"></i> سوالات متداول</h3>
+                <div class="faq-list">
+                    <details>
+                        <summary>چطور سفارش بدم؟</summary>
+                        <p>محصول مورد نظر رو به سبد اضافه کنید و مراحل خرید رو تکمیل کنید.</p>
+                    </details>
+                    <details>
+                        <summary>زمان ارسال چقدره؟</summary>
+                        <p>سفارش‌ها در تهران ۱ روز و شهرستان‌ها ۲ تا ۴ روز کاری ارسال میشن.</p>
+                    </details>
+                    <details>
+                        <summary>آیا ضمانت بازگشت داره؟</summary>
+                        <p>بله، تا ۷ روز پس از دریافت کالا امکان بازگشت وجود داره.</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===========================
+        FOOTER
+=========================== -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Forever Shop</h3>
+            <p>فروشگاه تخصصی محصولات فوراور با ارائه محصولات اورجینال، ضمانت اصالت کالا، ارسال سریع و پشتیبانی همه روزه.</p>
+        </div>
+        <div class="footer-col">
+            <h3>لینک‌های سریع</h3>
+            <a href="test_html2.html">خانه</a>
+            <a href="#">محصولات</a>
+            <a href="about.html">درباره ما</a>
+            <a href="contact.html">تماس با ما</a>
+        </div>
+        <div class="footer-col">
+            <h3>ارتباط با ما</h3>
+            <p><i class="fa-solid fa-phone"></i> 09123456789</p>
+            <p><i class="fa-solid fa-envelope"></i> info@forevershop.ir</p>
+            <div class="social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2026 تمامی حقوق این وب‌سایت متعلق به <strong>Forever Shop</strong> می‌باشد.</p>
+    </div>
+</footer>
+
+<a href="#" class="back-to-top"><i class="fa-solid fa-arrow-up"></i></a>
+
+<!-- ===========================
+        JavaScript
+=========================== -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // منوی موبایل — مثل صفحه اصلی
+    var toggle = document.getElementById('mobileNavToggle');
+    var nav = document.getElementById('mainNav');
+    if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+            var open = nav.classList.toggle('mobile-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.innerHTML = open
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                if (window.innerWidth <= 768) {
+                    nav.classList.remove('mobile-open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+                }
+            });
+        });
+    }
+
+    // ========== فرم تماس (اتصال به برنامه — دست نخورده) ==========
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const inputs = contactForm.querySelectorAll('input, select, textarea');
+        const contactData = {
+            name: inputs[0].value,
+            phone: inputs[1].value,
+            email: inputs[2].value,
+            subject: inputs[3].value,
+            message: inputs[4].value
+        };
+
+        // ارسال به پنل مدیریت
+        fetch('http://localhost:5000/api/contact', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(contactData)
+        }).catch(err => console.log(err));
+
+        const btn = contactForm.querySelector('.contact-submit');
+        const original = btn.innerHTML;
+
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> در حال ارسال...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> پیام ارسال شد!';
+            btn.style.background = '#16a34a';
+
+            setTimeout(() => {
+                contactForm.reset();
+                btn.innerHTML = original;
+                btn.style.background = '';
+                btn.disabled = false;
+                showToast('پیام شما با موفقیت ارسال شد. به زودی با شما تماس می‌گیریم.');
+            }, 2000);
+        }, 1500);
+    });
+
+    // ========== Toast ==========
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.innerHTML = `
+            <i class="fa-solid fa-circle-check"></i>
+            <span>${message}</span>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.classList.add('show'), 100);
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => toast.remove(), 400);
+        }, 4000);
+    }
+
+    // ========== تنظیمات تم ==========
+    const themeLinks = document.querySelectorAll('.settings-dropdown a[data-theme]');
+
+    function setTheme(theme) {
+        themeLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`a[data-theme="${theme}"]`);
+        if (activeLink) activeLink.classList.add('active');
+
+        if (theme === 'dark') document.body.classList.add('dark-mode');
+        else if (theme === 'light') document.body.classList.remove('dark-mode');
+        else {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    themeLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            setTheme(link.dataset.theme);
+        });
+    });
+
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+});
+</script>
+
+
+<script>
+/* همگام‌سازی حساب کاربری با صفحه اصلی (localStorage مشترک) */
+(function () {
+    if (!window.ForeverAccount) {
+        window.ForeverAccount = (function () {
+            function isRegistered() { return localStorage.getItem('foreverRegistered') === 'true'; }
+            function getUser() {
+                try { return JSON.parse(localStorage.getItem('foreverUser')) || null; }
+                catch (e) { return null; }
+            }
+            function generateReferralCode(firstName) {
+                var name = String(firstName || 'FRV').replace(/[^a-zA-Z]/g, '').toUpperCase().slice(0, 3) || 'FRV';
+                return (name + Math.floor(1000 + Math.random() * 9000)).slice(0, 8);
+            }
+            function registerUser(profile) {
+                var user = {
+                    firstName: (profile.firstName || '').trim(),
+                    lastName: (profile.lastName || '').trim(),
+                    phone: (profile.phone || '').trim(),
+                    email: (profile.email || '').trim(),
+                    myReferralCode: profile.myReferralCode || generateReferralCode(profile.firstName),
+                    referralUsed: (profile.referralUsed || '').trim(),
+                    loggedIn: true
+                };
+                localStorage.setItem('foreverUser', JSON.stringify(user));
+                localStorage.setItem('foreverRegistered', 'true');
+                return user;
+            }
+            function logout() {
+                localStorage.removeItem('foreverUser');
+                localStorage.removeItem('foreverRegistered');
+            }
+            return {
+                isRegistered: isRegistered, getUser: getUser,
+                generateReferralCode: generateReferralCode, registerUser: registerUser,
+                logout: logout, isLoggedIn: isRegistered
+            };
+        })();
+    }
+
+    function refreshUserMenuUI() {
+        var greeting = document.getElementById('userGreeting');
+        var loginBtnEl = document.getElementById('loginBtn');
+        var refBox = document.getElementById('userReferralBox');
+        var refDisplay = document.getElementById('userReferralCodeDisplay');
+        var logoutBtn = document.getElementById('userLogoutBtn') || document.querySelector('.user-logout');
+        var user = window.ForeverAccount.getUser();
+        var registered = window.ForeverAccount.isRegistered();
+
+        if (registered && user) {
+            if (greeting) greeting.textContent = 'سلام ' + (user.firstName || '') + '!';
+            if (loginBtnEl) {
+                loginBtnEl.textContent = user.phone || 'حساب شما';
+                loginBtnEl.removeAttribute('href');
+                loginBtnEl.style.pointerEvents = 'none';
+                loginBtnEl.style.cursor = 'default';
+            }
+            if (refBox) refBox.style.display = 'block';
+            if (refDisplay) refDisplay.textContent = user.myReferralCode || '—';
+            if (logoutBtn) logoutBtn.style.display = '';
+        } else {
+            if (greeting) greeting.textContent = 'سلام!';
+            if (loginBtnEl) {
+                loginBtnEl.textContent = 'ورود | ثبت‌نام';
+                loginBtnEl.setAttribute('href', '#');
+                loginBtnEl.style.pointerEvents = '';
+                loginBtnEl.style.cursor = '';
+            }
+            if (refBox) refBox.style.display = 'none';
+            if (refDisplay) refDisplay.textContent = '—';
+        }
+    }
+    window.refreshUserMenuUI = refreshUserMenuUI;
+
+    function boot() {
+        refreshUserMenuUI();
+        var userBtn = document.getElementById('userBtn');
+        var userDropdown = document.getElementById('userDropdown') || document.querySelector('.user-dropdown');
+        if (userBtn && userDropdown) {
+            userBtn.addEventListener('click', function () { refreshUserMenuUI(); });
+        }
+        var logoutBtn = document.getElementById('userLogoutBtn') || document.querySelector('.user-logout');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (window.ForeverAccount) window.ForeverAccount.logout();
+                if (userDropdown) userDropdown.classList.remove('active');
+                refreshUserMenuUI();
+            });
+        }
+        // بعد از ثبت‌نام در همین صفحه
+        document.addEventListener('forever-user-registered', refreshUserMenuUI);
+        // اگر در تب دیگر ثبت‌نام شد
+        window.addEventListener('storage', function (e) {
+            if (e.key === 'foreverUser' || e.key === 'foreverRegistered') refreshUserMenuUI();
+        });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+})();
+</script>
+
+</body>
+</html>

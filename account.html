@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>حساب کاربری | Forever Shop</title>
+    <meta name="description" content="مدیریت حساب کاربری، سفارش‌ها و اطلاعات شخصی در Forever Shop">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="test_css2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        body { font-family: Vazirmatn, Tahoma, sans-serif; background: #f3f4f6; margin: 0; color: #111827; }
+        body.dark-mode { background: #0f172a; color: #f9fafb; }
+        .acc-wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+        .acc-top {
+            display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+            justify-content: space-between; margin-bottom: 22px;
+        }
+        .acc-top h1 { margin: 0; font-size: 1.45rem; font-weight: 800; }
+        .acc-top a.back {
+            color: #0c7a2d; text-decoration: none; font-weight: 700;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        body.dark-mode .acc-top a.back { color: #4ade80; }
+        .acc-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 18px;
+        }
+        @media (max-width: 800px) {
+            .acc-grid { grid-template-columns: 1fr; }
+        }
+        .acc-side {
+            background: #fff; border-radius: 16px; padding: 14px;
+            box-shadow: 0 4px 18px rgba(0,0,0,.06);
+            height: fit-content;
+        }
+        body.dark-mode .acc-side { background: #1f2937; }
+        .acc-side a {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 14px; border-radius: 12px;
+            text-decoration: none; color: #374151; font-weight: 600;
+            margin-bottom: 4px;
+        }
+        body.dark-mode .acc-side a { color: #e5e7eb; }
+        .acc-side a:hover, .acc-side a.active {
+            background: #ecfdf5; color: #0c7a2d;
+        }
+        body.dark-mode .acc-side a:hover,
+        body.dark-mode .acc-side a.active {
+            background: #10241a; color: #4ade80;
+        }
+        .acc-side a i { width: 20px; text-align: center; }
+        .acc-main {
+            background: #fff; border-radius: 16px; padding: 22px;
+            box-shadow: 0 4px 18px rgba(0,0,0,.06);
+            min-height: 360px;
+        }
+        body.dark-mode .acc-main { background: #1f2937; }
+        .acc-section { display: none; }
+        .acc-section.active { display: block; }
+        .acc-section h2 {
+            margin: 0 0 14px; font-size: 1.15rem; font-weight: 800;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .acc-section h2 i { color: #16a34a; }
+        .profile-card {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+        }
+        @media (max-width: 600px) { .profile-card { grid-template-columns: 1fr; } }
+        .profile-item {
+            background: #f9fafb; border-radius: 12px; padding: 12px 14px;
+            border: 1px solid #e5e7eb;
+        }
+        body.dark-mode .profile-item {
+            background: #111827; border-color: #374151;
+        }
+        .profile-item span {
+            display: block; font-size: 12px; color: #6b7280; margin-bottom: 4px;
+        }
+        body.dark-mode .profile-item span { color: #9ca3af; }
+        .profile-item strong { font-size: 14px; font-weight: 700; }
+        .referral-box {
+            margin-top: 16px; padding: 14px; border-radius: 12px;
+            border: 2px dashed #0c7a2d; background: #f0faf3; text-align: center;
+        }
+        body.dark-mode .referral-box { background: #10241a; }
+        .referral-box strong {
+            display: block; margin-top: 6px; font-size: 1.2rem;
+            letter-spacing: 1px; color: #0c7a2d; direction: ltr;
+        }
+        body.dark-mode .referral-box strong { color: #4ade80; }
+        .order-card {
+            border: 1px solid #e5e7eb; border-radius: 14px;
+            padding: 14px; margin-bottom: 12px; background: #fafafa;
+        }
+        body.dark-mode .order-card {
+            background: #111827; border-color: #374151;
+        }
+        .order-card .onum {
+            font-weight: 800; color: #0c7a2d; direction: ltr; display: inline-block;
+        }
+        body.dark-mode .order-card .onum { color: #4ade80; }
+        .order-meta { font-size: 13px; color: #6b7280; margin: 6px 0 10px; }
+        body.dark-mode .order-meta { color: #9ca3af; }
+        .order-items { font-size: 13.5px; line-height: 1.8; }
+        .empty {
+            text-align: center; padding: 40px 16px; color: #6b7280;
+        }
+        body.dark-mode .empty { color: #9ca3af; }
+        .empty i { font-size: 2rem; opacity: .5; margin-bottom: 10px; }
+        .stat-row {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+            margin-bottom: 18px;
+        }
+        @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+        .stat {
+            background: #ecfdf5; border-radius: 12px; padding: 14px; text-align: center;
+        }
+        body.dark-mode .stat { background: #10241a; }
+        .stat b { display: block; font-size: 1.3rem; color: #0c7a2d; }
+        body.dark-mode .stat b { color: #4ade80; }
+        .stat span { font-size: 12px; color: #6b7280; }
+        body.dark-mode .stat span { color: #9ca3af; }
+        .gate {
+            max-width: 420px; margin: 80px auto; background: #fff;
+            border-radius: 18px; padding: 28px; text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,.08);
+        }
+        body.dark-mode .gate { background: #1f2937; }
+        .gate a {
+            display: inline-block; margin-top: 14px; padding: 12px 22px;
+            background: linear-gradient(135deg,#0c7a2d,#16a34a); color: #fff;
+            border-radius: 12px; text-decoration: none; font-weight: 800;
+        }
+        .logout-btn {
+            margin-top: 16px; width: 100%; border: none; border-radius: 12px;
+            padding: 12px; background: #fee2e2; color: #b91c1c;
+            font-weight: 800; cursor: pointer; font-family: inherit;
+        }
+        body.dark-mode .logout-btn { background: #7f1d1d; color: #fecaca; }
+        .addr-item, .wish-item {
+            border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px;
+            margin-bottom: 10px;
+        }
+        body.dark-mode .addr-item, body.dark-mode .wish-item {
+            border-color: #374151;
+        }
+    </style>
+</head>
+<body>
+<div class="acc-wrap" id="accApp">
+    <div class="acc-top">
+        <h1><i class="fa-solid fa-user-circle" style="color:#16a34a"></i> حساب کاربری</h1>
+        <a class="back" href="test_html2.html"><i class="fa-solid fa-house"></i> بازگشت به فروشگاه</a>
+    </div>
+
+    <div id="accGate" class="gate" style="display:none;">
+        <i class="fa-solid fa-lock" style="font-size:2rem;color:#16a34a;margin-bottom:10px;"></i>
+        <h2>ورود لازم است</h2>
+        <p>برای مشاهده حساب کاربری و سفارش‌ها ابتدا وارد شوید یا ثبت‌نام کنید.</p>
+        <a href="test_html2.html#auth">ورود / ثبت‌نام</a>
+    </div>
+
+    <div id="accPanel" class="acc-grid" style="display:none;">
+        <aside class="acc-side" id="accNav">
+            <a href="#overview" data-tab="overview" class="active"><i class="fa-solid fa-gauge-high"></i> داشبورد</a>
+            <a href="#orders" data-tab="orders"><i class="fa-solid fa-box"></i> سفارش‌های من</a>
+            <a href="#wishlist" data-tab="wishlist"><i class="fa-solid fa-heart"></i> علاقه‌مندی‌ها</a>
+            <a href="#addresses" data-tab="addresses"><i class="fa-solid fa-location-dot"></i> آدرس‌ها</a>
+            <a href="#wallet" data-tab="wallet"><i class="fa-solid fa-wallet"></i> کیف پول</a>
+            <a href="#notifications" data-tab="notifications"><i class="fa-solid fa-bell"></i> اعلان‌ها</a>
+        </aside>
+
+        <main class="acc-main">
+            <section class="acc-section active" id="sec-overview">
+                <h2><i class="fa-solid fa-gauge-high"></i> داشبورد</h2>
+                <div class="stat-row">
+                    <div class="stat"><b id="statOrders">0</b><span>سفارش</span></div>
+                    <div class="stat"><b id="statItems">0</b><span>اقلام خریداری‌شده</span></div>
+                    <div class="stat"><b id="statCode">—</b><span>کد معرف</span></div>
+                </div>
+                <div class="profile-card" id="profileCard"></div>
+                <div class="referral-box">
+                    <span>کد معرف اختصاصی شما</span>
+                    <strong id="refCode">—</strong>
+                </div>
+                <button type="button" class="logout-btn" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i> خروج از حساب
+                </button>
+            </section>
+
+            <section class="acc-section" id="sec-orders">
+                <h2><i class="fa-solid fa-box"></i> سفارش‌های من</h2>
+                <div id="ordersList"></div>
+            </section>
+
+            <section class="acc-section" id="sec-wishlist">
+                <h2><i class="fa-solid fa-heart"></i> علاقه‌مندی‌ها</h2>
+                <div id="wishList"></div>
+            </section>
+
+            <section class="acc-section" id="sec-addresses">
+                <h2><i class="fa-solid fa-location-dot"></i> آدرس‌ها</h2>
+                <div id="addrList"></div>
+            </section>
+
+            <section class="acc-section" id="sec-wallet">
+                <h2><i class="fa-solid fa-wallet"></i> کیف پول</h2>
+                <div class="profile-item">
+                    <span>موجودی</span>
+                    <strong id="walletBal">۰ تومان</strong>
+                </div>
+                <p class="empty" style="padding:20px 0">کیف پول به‌زودی فعال می‌شود.</p>
+            </section>
+
+            <section class="acc-section" id="sec-notifications">
+                <h2><i class="fa-solid fa-bell"></i> اعلان‌ها</h2>
+                <div id="notifList"></div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script>
+(function () {
+  function fa(n) {
+    try { return Math.round(Number(n) || 0).toLocaleString('fa-IR'); } catch (e) { return String(n || 0); }
+  }
+  function money(n) { return fa(n) + ' تومان'; }
+
+  function getUser() {
+    try {
+      var u = JSON.parse(localStorage.getItem('foreverUser') || 'null');
+      if (u && (u.phone || u.name || u.firstName || u.first_name)) return u;
+    } catch (e) {}
+    return null;
+  }
+
+  function getOrders() {
+    var list = [];
+    try {
+      var hist = JSON.parse(localStorage.getItem('foreverLocalOrders') || '[]');
+      if (Array.isArray(hist)) list = list.concat(hist);
+    } catch (e) {}
+    try {
+      var q = JSON.parse(localStorage.getItem('foreverOrderQueue') || '[]');
+      if (Array.isArray(q)) {
+        q.forEach(function (x) {
+          if (x && x.payload) {
+            list.push({
+              orderNumber: x.localId || ('Q-' + (x.createdAt || '')),
+              payload: x.payload,
+              at: x.createdAt,
+              offline: !x.synced
+            });
+          }
+        });
+      }
+    } catch (e) {}
+    // dedupe by orderNumber
+    var seen = {};
+    return list.filter(function (o) {
+      var k = String(o.orderNumber || '');
+      if (!k || seen[k]) return false;
+      seen[k] = 1;
+      return true;
+    });
+  }
+
+  function showTab(id) {
+    document.querySelectorAll('.acc-section').forEach(function (s) {
+      s.classList.toggle('active', s.id === 'sec-' + id);
+    });
+    document.querySelectorAll('#accNav a').forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('data-tab') === id);
+    });
+    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+  }
+
+  function render() {
+    var user = getUser();
+    var gate = document.getElementById('accGate');
+    var panel = document.getElementById('accPanel');
+    if (!user) {
+      gate.style.display = '';
+      panel.style.display = 'none';
+      return;
+    }
+    gate.style.display = 'none';
+    panel.style.display = '';
+
+    var first = user.firstName || user.first_name || '';
+    var last = user.lastName || user.last_name || '';
+    var name = (first + ' ' + last).trim() || user.name || 'کاربر';
+    var phone = user.phone || '—';
+    var email = user.email || '—';
+    var code = user.referral_code || user.referralCode || user.code || '—';
+
+    document.getElementById('profileCard').innerHTML =
+      '<div class="profile-item"><span>نام</span><strong>' + name + '</strong></div>' +
+      '<div class="profile-item"><span>موبایل</span><strong style="direction:ltr">' + phone + '</strong></div>' +
+      '<div class="profile-item"><span>ایمیل</span><strong>' + email + '</strong></div>' +
+      '<div class="profile-item"><span>وضعیت</span><strong style="color:#16a34a">فعال</strong></div>';
+
+    document.getElementById('refCode').textContent = code;
+    document.getElementById('statCode').textContent = code !== '—' ? code : '—';
+
+    var orders = getOrders();
+    // filter by phone if possible
+    var myOrders = orders.filter(function (o) {
+      var p = (o.payload && o.payload.phone) || o.phone || '';
+      if (!p || !user.phone) return true;
+      return String(p) === String(user.phone);
+    });
+    document.getElementById('statOrders').textContent = fa(myOrders.length);
+    var itemCount = 0;
+    myOrders.forEach(function (o) {
+      var items = (o.payload && o.payload.items) || o.items || [];
+      items.forEach(function (it) { itemCount += (it.qty || 1); });
+    });
+    document.getElementById('statItems').textContent = fa(itemCount);
+
+    var box = document.getElementById('ordersList');
+    if (!myOrders.length) {
+      box.innerHTML = '<div class="empty"><i class="fa-solid fa-box-open"></i><p>هنوز سفارشی ثبت نکرده‌اید</p><a href="test_html2.html#products" style="color:#16a34a;font-weight:700">مشاهده محصولات</a></div>';
+    } else {
+      box.innerHTML = myOrders.map(function (o) {
+        var items = (o.payload && o.payload.items) || o.items || [];
+        var total = 0;
+        var lines = items.map(function (it) {
+          total += (it.price || 0) * (it.qty || 1);
+          return (it.name || 'محصول') + ' × ' + (it.qty || 1);
+        }).join('<br>');
+        var addr = (o.payload && (o.payload.city || '') + ' — ' + (o.payload.address || '')) || '';
+        return '<div class="order-card">' +
+          '<div>شماره سفارش: <span class="onum">' + (o.orderNumber || '—') + '</span>' +
+          (o.offline ? ' <small style="color:#f59e0b">(در صف ارسال)</small>' : '') + '</div>' +
+          '<div class="order-meta">' + (o.at || '') + (addr ? ' | ' + addr : '') + '</div>' +
+          '<div class="order-items">' + (lines || '—') + '</div>' +
+          (total ? '<div style="margin-top:8px;font-weight:800;color:#b91c1c">' + money(total) + '</div>' : '') +
+          '</div>';
+      }).join('');
+    }
+
+    // wishlist
+    var wish = [];
+    try { wish = JSON.parse(localStorage.getItem('foreverWishlist') || '[]'); } catch (e) {}
+    var wbox = document.getElementById('wishList');
+    if (!wish.length) {
+      wbox.innerHTML = '<div class="empty"><i class="fa-regular fa-heart"></i><p>لیست علاقه‌مندی خالی است</p></div>';
+    } else {
+      wbox.innerHTML = wish.map(function (w) {
+        return '<div class="wish-item"><strong>' + (w.name || 'محصول') + '</strong></div>';
+      }).join('');
+    }
+
+    // addresses from last orders + saved
+    var addrs = [];
+    try { addrs = JSON.parse(localStorage.getItem('foreverAddresses') || '[]'); } catch (e) {}
+    myOrders.forEach(function (o) {
+      var p = o.payload || {};
+      if (p.address) {
+        addrs.push({
+          name: p.customerName || name,
+          phone: p.phone || phone,
+          city: p.city || '',
+          postal: p.postal || '',
+          address: p.address || ''
+        });
+      }
+    });
+    // unique by address text
+    var seenA = {};
+    addrs = addrs.filter(function (a) {
+      var k = (a.address || '') + (a.city || '');
+      if (!k || seenA[k]) return false;
+      seenA[k] = 1;
+      return true;
+    });
+    var abox = document.getElementById('addrList');
+    if (!addrs.length) {
+      abox.innerHTML = '<div class="empty"><i class="fa-solid fa-location-dot"></i><p>آدرسی ذخیره نشده. بعد از اولین سفارش اینجا نمایش داده می‌شود.</p></div>';
+    } else {
+      abox.innerHTML = addrs.map(function (a) {
+        return '<div class="addr-item"><strong>' + (a.name || '') + '</strong><div class="order-meta">' +
+          (a.phone || '') + (a.city ? ' | ' + a.city : '') + (a.postal ? ' | ' + a.postal : '') +
+          '</div><div>' + (a.address || '') + '</div></div>';
+      }).join('');
+    }
+
+    // notifications simple
+    var nbox = document.getElementById('notifList');
+    if (!myOrders.length) {
+      nbox.innerHTML = '<div class="empty"><i class="fa-regular fa-bell"></i><p>اعلانی ندارید</p></div>';
+    } else {
+      nbox.innerHTML = myOrders.slice(0, 5).map(function (o) {
+        return '<div class="order-card">سفارش <span class="onum">' + (o.orderNumber || '') + '</span> ثبت شد.</div>';
+      }).join('');
+    }
+
+    // theme
+    try {
+      var theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.body.classList.add('dark-mode');
+      }
+    } catch (e) {}
+  }
+
+  document.getElementById('accNav').addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-tab]');
+    if (!a) return;
+    e.preventDefault();
+    showTab(a.getAttribute('data-tab'));
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    try {
+      localStorage.removeItem('foreverUser');
+      localStorage.removeItem('foreverRegistered');
+    } catch (e) {}
+    location.href = 'test_html2.html';
+  });
+
+  var hash = (location.hash || '#overview').replace('#', '') || 'overview';
+  if (!document.getElementById('sec-' + hash)) hash = 'overview';
+  showTab(hash);
+  render();
+  window.addEventListener('hashchange', function () {
+    var h = (location.hash || '#overview').replace('#', '') || 'overview';
+    if (document.getElementById('sec-' + h)) showTab(h);
+  });
+})();
+</script>
+</body>
+</html>
