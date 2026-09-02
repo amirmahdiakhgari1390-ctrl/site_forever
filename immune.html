@@ -7010,5 +7010,135 @@ if (backTop) {
   });
 }
 </script>
+ <style id="immuneMobileFix">
+/* ===== کارت‌های محصول در موبایل — مربعی با عرض کمی بیشتر ===== */
+@media (max-width: 767px) {
+  .product-box {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 0 10px !important;
+  }
+  .product {
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 0.82 / 1; /* کمی عمودی‌تر از مربع کامل، نه کشیده */
+    height: auto;
+  }
+  .product-img {
+    flex: 0 0 auto;
+    min-height: unset !important;
+    padding: 10px !important;
+    aspect-ratio: 1 / 1;
+  }
+  .product-img img {
+    width: 100%;
+    height: 100%;
+    max-height: none !important;
+    object-fit: contain;
+  }
+  .product-info,
+  .product .product-body {
+    flex: 1;
+    padding: 8px 10px 4px !important;
+    overflow: hidden;
+  }
+  .product h3,
+  .product-info h3 {
+    font-size: 0.82rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 4px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .product p,
+  .product-info p {
+    display: none !important; /* توضیح کوتاه رو تو کارت موبایل حذف می‌کنیم تا شلوغ نشه */
+  }
+  .product .price,
+  .product-info .price {
+    margin-bottom: 8px !important;
+  }
+  .product .price-old,
+  .product .price-new,
+  .product .price-off-label {
+    font-size: 11px !important;
+  }
+  .product .price-new {
+    font-size: 0.85rem !important;
+  }
+  .product-buttons {
+    padding: 0 8px 10px !important;
+    gap: 5px !important;
+  }
+  .product-buttons .view-product-btn,
+  .product-buttons .add-to-cart-btn,
+  .product-buttons .btn-buy {
+    font-size: 0.68rem !important;
+    padding: 6px 0 !important;
+  }
+}
+
+/* ===== مودال مشاهده محصول در موبایل — بهبود چیدمان ===== */
+@media (max-width: 600px) {
+  .product-modal-box {
+    width: 94vw !important;
+    max-height: 90vh !important;
+    border-radius: 18px !important;
+  }
+  .product-modal-content {
+    flex-direction: column;
+  }
+  .product-modal-image {
+    min-height: 200px !important;
+    padding: 20px 16px 10px !important;
+  }
+  .product-modal-image img,
+  #modalProductImage {
+    max-width: 100% !important;
+    max-height: 34vh !important;
+  }
+  .product-modal-info {
+    padding: 14px 16px 20px !important;
+    gap: 8px !important;
+  }
+  .product-modal-info h2,
+  #modalProductName {
+    font-size: 1.05rem !important;
+  }
+  .modal-product-price,
+  #modalProductPrice {
+    font-size: 1.1rem !important;
+  }
+  .modal-product-desc,
+  #modalProductDesc {
+    font-size: 0.85rem !important;
+    max-height: 140px !important;
+  }
+  .modal-features {
+    flex-wrap: wrap;
+    gap: 8px !important;
+  }
+  .modal-feature {
+    font-size: 0.72rem !important;
+  }
+  .modal-quantity {
+    margin: 8px 0 !important;
+  }
+  .modal-add-cart-btn {
+    padding: 12px !important;
+    font-size: 0.9rem !important;
+  }
+  .modal-stock-info {
+    font-size: 0.8rem !important;
+    padding: 8px 10px !important;
+  }
+  .modal-reviews-block h3 {
+    font-size: 0.95rem !important;
+  }
+}
+</style>   
 </body>
 </html>
