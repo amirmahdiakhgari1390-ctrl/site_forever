@@ -7139,6 +7139,67 @@ if (backTop) {
     font-size: 0.95rem !important;
   }
 }
-</style>   
+</style>
+<style id="immuneMobileButtonsFix">
+@media (max-width: 767px) {
+  /* کارت: عکس کوچیک‌تر (خودت نسبتش رو کم می‌کنی) و فضای کافی برای دکمه‌ها */
+  .product {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+  }
+
+  .product-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding: 10px 10px 12px !important;
+    margin-top: auto !important;
+  }
+
+  /* دکمه مشاهده محصول — دقیقاً مثل دسکتاپ ولی فونت کمی کوچیک‌تر */
+  .product-buttons .view-product-btn {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    padding: 9px 0 !important;
+    border: 2px solid #16a34a !important;
+    border-radius: 10px !important;
+    background: #fff !important;
+    color: #0c7a2d !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  /* دکمه افزودن به سبد */
+  .product-buttons .add-to-cart-btn,
+  .product-buttons .btn-buy {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+    padding: 9px 0 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    background: linear-gradient(135deg, #0c7a2d, #16a34a) !important;
+    color: #fff !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  body.dark-mode .product-buttons .view-product-btn {
+    background: transparent !important;
+    color: #4ade80 !important;
+    border-color: #4ade80 !important;
+  }
+}
+</style>    
 </body>
 </html>
