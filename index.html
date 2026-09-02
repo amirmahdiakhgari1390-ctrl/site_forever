@@ -2189,7 +2189,245 @@ img { max-width: 100%; height: auto; }
 <script type="application/ld+json" id="forever-webpage-schema">
 {"@context":"https://schema.org","@type":"WebPage","name":"Forever Shop","url":"https://forevershop.ir/","inLanguage":"fa-IR","isPartOf":{"@type":"WebSite","name":"Forever Shop","url":"https://forevershop.ir/"}}
 </script>
+<style id="welcomeModalTheme">
+/* ===== مودال خوش‌آمدگویی — هماهنگ با برند Forever Shop ===== */
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 30, 14, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 15000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+    padding: 18px;
+}
+.welcome-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.welcome-box {
+    background: #fff;
+    border-radius: 26px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 0 0 28px;
+    transform: translateY(24px) scale(.96);
+    transition: transform .35s cubic-bezier(.22,.61,.36,1);
+    box-shadow: 0 35px 80px rgba(6, 30, 14, .45);
+}
+.welcome-overlay.active .welcome-box {
+    transform: translateY(0) scale(1);
+}
+.welcome-close {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,.9);
+    color: #0c7a2d;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+.welcome-close:hover {
+    background: #fff;
+    transform: rotate(90deg);
+}
 
+/* هدر سبز با لوگو */
+.welcome-header {
+    background: linear-gradient(135deg, #0c7a2d 0%, #16a34a 55%, #22c55e 100%);
+    padding: 40px 28px 32px;
+    border-radius: 26px 26px 40% 40% / 26px 26px 24px 24px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+.welcome-header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 180px;
+    height: 180px;
+    background: rgba(255,255,255,.1);
+    border-radius: 50%;
+}
+.welcome-header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -30px;
+    width: 140px;
+    height: 140px;
+    background: rgba(255,255,255,.08);
+    border-radius: 50%;
+}
+.welcome-logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 14px;
+    background: rgba(255,255,255,.18);
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    position: relative;
+    z-index: 1;
+}
+.welcome-header h2 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin: 0 0 8px;
+    position: relative;
+    z-index: 1;
+}
+.welcome-header p {
+    font-size: .88rem;
+    color: rgba(255,255,255,.9);
+    line-height: 1.9;
+    margin: 0;
+    max-width: 340px;
+    margin-inline: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* مزایا */
+.welcome-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 22px 24px 6px;
+}
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0faf3;
+    border: 1px solid #dcfce7;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #14532d;
+}
+.benefit-item i {
+    color: #16a34a;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* فرم */
+.welcome-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px 24px 4px;
+}
+.welcome-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.welcome-input-group i {
+    position: absolute;
+    right: 16px;
+    color: #0c7a2d;
+    font-size: 15px;
+    pointer-events: none;
+}
+.welcome-input-group input {
+    width: 100%;
+    padding: 13px 44px 13px 16px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    background: #fafafa;
+    color: #333;
+    transition: .25s;
+    box-sizing: border-box;
+}
+.welcome-input-group input:focus {
+    border-color: #0c7a2d;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(12,122,45,.12);
+}
+
+.welcome-submit {
+    margin: 6px 24px 0;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #0c7a2d, #16a34a);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: .25s;
+    width: calc(100% - 48px);
+}
+.welcome-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(12,122,45,.35);
+}
+
+.welcome-later {
+    display: block;
+    margin: 12px auto 0;
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    font-size: .8rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.welcome-later:hover { color: #6b7280; }
+
+/* حالت شب */
+body.dark-mode .welcome-box { background: #1a1a1a; }
+body.dark-mode .benefit-item {
+    background: #10241a;
+    border-color: #14532d;
+    color: #bbf7d0;
+}
+body.dark-mode .welcome-input-group input {
+    background: #111827;
+    border-color: #374151;
+    color: #e5e7eb;
+}
+body.dark-mode .welcome-later { color: #6b7280; }
+
+@media (max-width: 480px) {
+    .welcome-benefits { grid-template-columns: 1fr; }
+    .welcome-header { padding: 32px 20px 26px; }
+}
+</style>
 </head>
 
 <body data-page="home">
