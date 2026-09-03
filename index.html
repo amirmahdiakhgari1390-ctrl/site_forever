@@ -2481,6 +2481,25 @@ body.dark-mode .user-dropdown {
     }
 }
 </style>    
+<style id="categoryTwoPerRow">
+.category-box {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 14px !important;
+}
+.icon-bone {
+  background: linear-gradient(135deg, #78716c, #57534e);
+}
+.icon-vessel {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+@media (min-width: 768px) {
+  .category-box {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 18px !important;
+  }
+}
+</style>    
 </head>
 
 <body data-page="home">
@@ -3286,6 +3305,23 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <h3>تجربیات مشتری‌ها</h3>
             <p>نظرات و تجربیات واقعی خریداران فوراور</p>
+        </a>
+        <!-- استخوان‌ها -->
+        <a href="ostekhan.html" class="category-card">
+            <div class="category-icon icon-bone">
+                <i class="fa-solid fa-bone"></i>
+            </div>
+            <h3>استخوان‌ها</h3>
+            <p>تقویت و سلامت استخوان‌ها و مفاصل</p>
+        </a>
+        
+        <!-- عروق -->
+        <a href="orogh.html" class="category-card">
+            <div class="category-icon icon-vessel">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <h3>عروق</h3>
+            <p>سلامت قلب و گردش خون</p>
         </a>
 
     </div>
