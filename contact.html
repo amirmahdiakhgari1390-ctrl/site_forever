@@ -87,34 +87,72 @@
             border-radius: 8px;
         }
 
-        @media (max-width: 768px) {
-            .mobile-nav-toggle { display: inline-flex; }
-            nav {
-                display: none;
-                width: 100%;
-                order: 10;
-                flex-basis: 100%;
-            }
-            nav.mobile-open { display: block; }
-            nav .menu {
-                flex-direction: column;
-                align-items: stretch;
-                padding: 8px 0 12px;
-                gap: 0;
-            }
-            nav .menu > li > a {
-                padding: 14px 12px;
-                border-bottom: 1px solid #eee;
-                font-size: 1rem;
-            }
-            body.dark-mode nav .menu > li > a { border-color: #374151; }
-            nav .submenu {
-                position: static !important;
-                box-shadow: none !important;
-                border: none !important;
-                padding-right: 12px;
-            }
-            .top-header { padding: 10px 12px; }
+        @media (max-width: 900px) {
+          .mobile-nav-toggle { display: inline-flex !important; z-index: 10001; }
+          .top-header { flex-wrap: wrap; gap: 8px; position: relative; }
+          #mainNav {
+            display: none !important; width: 100%; order: 99;
+            background: #fff; border-radius: 14px;
+            box-shadow: 0 12px 40px rgba(0,0,0,.12); margin-top: 8px;
+            max-height: min(78vh, 640px); overflow-y: auto; -webkit-overflow-scrolling: touch;
+          }
+          body.dark-mode #mainNav { background: #111827; box-shadow: 0 12px 40px rgba(0,0,0,.45); }
+          #mainNav.mobile-open { display: block !important; }
+        
+          /* منو به شکل خطی (افقی) و رج‌به‌رج — نه ستونی */
+          #mainNav .menu {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            padding: 14px 10px !important;
+            width: 100%;
+          }
+          #mainNav .menu > li {
+            width: auto !important;
+            border-bottom: none !important;
+          }
+          #mainNav .menu > li > a {
+            display: inline-flex !important;
+            align-items: center;
+            gap: 4px;
+            width: auto !important;
+            padding: 8px 14px !important;
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
+            background: #f0fdf4;
+            border-radius: 20px;
+            white-space: nowrap;
+          }
+          body.dark-mode #mainNav .menu > li > a {
+            background: #1f2937;
+            color: #4ade80;
+          }
+        
+          #mainNav .submenu {
+            position: static !important; display: none; opacity: 1 !important; visibility: visible !important;
+            transform: none !important; box-shadow: none !important; background: #f0fdf4 !important;
+            border: none !important; border-radius: 10px !important; min-width: 100% !important;
+            padding: 6px !important; margin: 6px 0 0 !important;
+            display: none;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            gap: 6px !important;
+          }
+          body.dark-mode #mainNav .submenu { background: #1f2937 !important; }
+          #mainNav .menu > li.submenu-open > .submenu { display: flex !important; }
+          #mainNav .submenu li a {
+            display: inline-block; padding: 6px 12px; font-size: 0.82rem; color: #166534;
+            text-decoration: none; background: #dcfce7; border-radius: 14px; white-space: nowrap;
+          }
+          body.dark-mode #mainNav .submenu li a { color: #86efac; background: #111827; }
+        }
+        @media (min-width: 901px) {
+          .mobile-nav-toggle { display: none !important; }
+          #mainNav { display: block !important; }
         }
         /* سه کارت تماس — وسط‌چین و مرتب */
         .contact-info-section {
@@ -690,6 +728,49 @@ document.addEventListener('DOMContentLoaded', () => {
     else boot();
 })();
 </script>
+<script>
+(function () {
+    var oldToggle = document.getElementById('mobileNavToggle');
+    var nav = document.getElementById('mainNav');
+    if (!oldToggle || !nav) return;
 
+    var toggle = oldToggle.cloneNode(true);
+    oldToggle.parentNode.replaceChild(toggle, oldToggle);
+
+    toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('mobile-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.innerHTML = open
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    nav.querySelectorAll('.menu > li').forEach(function (li) {
+        var sub = li.querySelector(':scope > .submenu');
+        var link = li.querySelector(':scope > a');
+        if (!sub || !link) return;
+        link.addEventListener('click', function (e) {
+            if (window.innerWidth > 900) return;
+            var href = link.getAttribute('href') || '';
+            if (href === '#' || href === '') {
+                e.preventDefault();
+                li.classList.toggle('submenu-open');
+            }
+        });
+    });
+
+    nav.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+            if (window.innerWidth > 900) return;
+            var href = a.getAttribute('href') || '';
+            if (href && href !== '#') {
+                nav.classList.remove('mobile-open');
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+        });
+    });
+})();
+</script>
 </body>
 </html>
