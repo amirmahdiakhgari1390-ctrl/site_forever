@@ -522,18 +522,118 @@ img, video, iframe, table {
   height: auto;
 }
 </style>    
+<style id="hamkariMobileNavFix">
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 9000;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+body.dark-mode .top-header { background: #111827; }
+
+.mobile-nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #0c7a2d;
+    background: #fff;
+    border-radius: 10px;
+    color: #0c7a2d;
+    font-size: 1.25rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+body.dark-mode .mobile-nav-toggle { background: #1f2937; color: #4ade80; border-color: #4ade80; }
+
+nav .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+nav .menu > li > a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+}
+
+@media (max-width: 900px) {
+  .mobile-nav-toggle { display: inline-flex !important; z-index: 10001; }
+  .top-header { flex-wrap: wrap; gap: 8px; position: relative; }
+  #mainNav {
+    display: none; width: 100%; order: 99;
+    background: #fff; border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.12); margin-top: 8px;
+    max-height: min(78vh, 640px); overflow-y: auto; -webkit-overflow-scrolling: touch;
+  }
+  body.dark-mode #mainNav { background: #111827; box-shadow: 0 12px 40px rgba(0,0,0,.45); }
+  #mainNav.mobile-open { display: block !important; }
+  #mainNav .menu {
+    display: flex !important; flex-direction: column !important;
+    align-items: stretch !important; gap: 0 !important; padding: 8px 0 !important; width: 100%;
+  }
+  #mainNav .menu > li { width: 100%; border-bottom: 1px solid #e5e7eb; }
+  body.dark-mode #mainNav .menu > li { border-bottom-color: #374151; }
+  #mainNav .menu > li > a {
+    display: flex !important; justify-content: space-between; align-items: center;
+    width: 100%; padding: 14px 16px !important; font-size: 1rem !important; font-weight: 700 !important;
+  }
+  #mainNav .submenu {
+    position: static !important; display: none; opacity: 1 !important; visibility: visible !important;
+    transform: none !important; box-shadow: none !important; background: #f0fdf4 !important;
+    border: none !important; border-radius: 0 !important; min-width: 100% !important; padding: 0 !important; margin: 0 !important;
+  }
+  body.dark-mode #mainNav .submenu { background: #1f2937 !important; }
+  #mainNav .menu > li.submenu-open > .submenu { display: block !important; }
+  #mainNav .submenu li a {
+    display: block; padding: 12px 16px 12px 28px; font-size: 0.92rem; color: #166534;
+    text-decoration: none; border-bottom: 1px solid #dcfce7;
+  }
+  body.dark-mode #mainNav .submenu li a { color: #86efac; border-bottom-color: #374151; }
+  #mainNav .submenu li:last-child a { border-bottom: none; }
+}
+@media (min-width: 901px) {
+  .mobile-nav-toggle { display: none !important; }
+  #mainNav { display: block !important; }
+}
+</style>    
 </head>
 <body>
-<header>
+<header role="banner">
     <div class="top-header">
-        <div class="logo"><a href="index.html">Forever Shop</a></div>
-        <nav>
+        <div class="logo">
+            <a href="index.html" title="صفحه اصلی Forever Shop">Forever Shop</a>
+        </div>
+
+        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="باز و بسته کردن منوی موبایل" aria-expanded="false" aria-controls="mainNav">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <nav id="mainNav" aria-label="منوی اصلی" role="navigation">
             <ul class="menu">
                 <li><a href="index.html">خانه</a></li>
                 <li>
                     <a href="#">محصولات <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="submenu">
                         <li><a href="immune.html">سیستم ایمنی</a></li>
+                        <li><a href="ostekhan.html">استخوان‌ها</a></li>
+                        <li><a href="orogh.html">عروق</a></li>
                         <li><a href="varsesh.html">ورزشی</a></li>
                         <li><a href="drink.html">نوشیدنی‌ها</a></li>
                         <li><a href="bee.html">محصولات زنبور عسل</a></li>
@@ -550,6 +650,7 @@ img, video, iframe, table {
                 <li><a href="contact.html">تماس با ما</a></li>
             </ul>
         </nav>
+
         <div class="user-menu">
             <a href="#" class="user-icon" id="userBtn" title="حساب کاربری"><i class="fa-solid fa-user"></i></a>
             <div class="user-dropdown" id="userDropdown">
@@ -577,6 +678,7 @@ img, video, iframe, table {
                 <a href="#" class="user-logout" id="userLogoutBtn"><i class="fa-solid fa-right-from-bracket"></i> خروج از حساب</a>
             </div>
         </div>
+
         <div class="header-icons">
             <div class="settings-menu">
                 <a href="#" title="تنظیمات"><i class="fa-solid fa-gear"></i></a>
@@ -589,7 +691,6 @@ img, video, iframe, table {
         </div>
     </div>
 </header>
-
 <section class="hamkari-hero">
     <div class="hamkari-hero-content">
         <span class="hero-tag">🤝 فرصت همکاری با فوراور</span>
@@ -763,5 +864,34 @@ var result=await window.ForeverDataAPI.hamkari({firstName:firstName,lastName:las
 if(result&&result.success){showStatus(true,'درخواست همکاری با موفقیت ثبت شد. به‌زودی با شما تماس می‌گیریم.');form.reset();if(btn){btn.innerHTML='<i class="fa-solid fa-check"></i> ارسال شد';setTimeout(function(){btn.innerHTML=originalBtn;btn.disabled=false},2000)}}
 else{showStatus(false,(result&&result.message)||'ارسال ناموفق بود.');if(btn){btn.innerHTML=originalBtn;btn.disabled=false}}})});
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('mobileNavToggle');
+    var nav = document.getElementById('mainNav');
+    if (!toggle || !nav) return;
+
+    toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('mobile-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.innerHTML = open
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    nav.querySelectorAll('.menu > li').forEach(function (li) {
+        var sub = li.querySelector(':scope > .submenu');
+        var link = li.querySelector(':scope > a');
+        if (!sub || !link) return;
+        link.addEventListener('click', function (e) {
+            if (window.innerWidth > 900) return;
+            var href = link.getAttribute('href') || '';
+            if (href === '#' || href === '') {
+                e.preventDefault();
+                li.classList.toggle('submenu-open');
+            }
+        });
+    });
+});
+</script>    
 </body>
 </html>
