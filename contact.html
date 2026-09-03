@@ -231,6 +231,69 @@ img, video, iframe, table {
   max-width: 100% !important;
   height: auto;
 }
+</style>  
+<style id="foreverMobileMenuFinal">
+@media (max-width: 900px) {
+  button.mobile-nav-toggle#mobileNavToggle {
+    display: inline-flex !important;
+  }
+  nav#mainNav {
+    display: none !important;
+    width: 100% !important;
+  }
+  nav#mainNav.mobile-open {
+    display: block !important;
+  }
+  nav#mainNav ul.menu {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 14px 10px !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+  nav#mainNav ul.menu > li {
+    width: auto !important;
+    list-style: none !important;
+  }
+  nav#mainNav ul.menu > li > a {
+    display: inline-flex !important;
+    padding: 8px 14px !important;
+    font-size: 0.9rem !important;
+    background: #f0fdf4 !important;
+    border-radius: 20px !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+  }
+  nav#mainNav ul.submenu {
+    display: none !important;
+  }
+  nav#mainNav li.submenu-open > ul.submenu {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    position: static !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 6px 0 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+  nav#mainNav ul.submenu li a {
+    display: inline-block !important;
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    background: #dcfce7 !important;
+    border-radius: 14px !important;
+    text-decoration: none !important;
+  }
+}
+@media (min-width: 901px) {
+  nav#mainNav { display: block !important; }
+}
 </style>    
 </head>
 
@@ -772,5 +835,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })();
 </script>
+<script>
+window.addEventListener('load', function () {
+    var oldBtn = document.getElementById('mobileNavToggle');
+    var nav = document.getElementById('mainNav');
+    if (!oldBtn || !nav) {
+        console.warn('منو پیدا نشد: دکمه یا nav وجود ندارد');
+        return;
+    }
+
+    var btn = oldBtn.cloneNode(true);
+    oldBtn.parentNode.replaceChild(btn, oldBtn);
+
+    btn.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var isOpen = nav.classList.contains('mobile-open');
+        if (isOpen) {
+            nav.classList.remove('mobile-open');
+            btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        } else {
+            nav.classList.add('mobile-open');
+            btn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        }
+    };
+
+    var topLis = nav.querySelectorAll('.menu > li');
+    topLis.forEach(function (li) {
+        var link = li.querySelector(':scope > a');
+        var sub = li.querySelector(':scope > .submenu');
+        if (!link || !sub) return;
+        link.onclick = function (e) {
+            if (window.innerWidth > 900) return;
+            var href = link.getAttribute('href') || '';
+            if (href === '#' || href === '') {
+                e.preventDefault();
+                li.classList.toggle('submenu-open');
+            }
+        };
+    });
+
+    console.log('منوی موبایل با موفقیت فعال شد');
+});
+</script>    
 </body>
 </html>
