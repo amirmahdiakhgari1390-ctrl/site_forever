@@ -1,0 +1,37 @@
+2026-08-02 08:23:49,485 - INFO - ✅ پایگاه داده آماده است
+2026-08-02 08:23:49,486 - INFO - 🚀 سرور روی پورت 5050 شروع می‌شود...
+2026-08-02 08:23:52,278 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://192.168.1.102:5050
+2026-08-02 08:23:52,278 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-02 08:23:58,433 - INFO - ✅ رابط کاربری راه‌اندازی شد
+2026-08-02 08:24:43,814 - INFO - 127.0.0.1 - - [02/Aug/2026 08:24:43] "[33mGET /api/rate HTTP/1.1[0m" 404 -
+2026-08-02 08:24:44,295 - INFO - 127.0.0.1 - - [02/Aug/2026 08:24:44] "[33mGET /api/rate HTTP/1.1[0m" 404 -
+2026-08-02 08:25:27,070 - INFO - 127.0.0.1 - - [02/Aug/2026 08:25:27] "OPTIONS /api/order HTTP/1.1" 200 -
+2026-08-02 08:25:27,217 - INFO - ✅ سفارش جدید: FS-260802-082527 - amir akhgarian
+2026-08-02 08:25:27,219 - INFO - 127.0.0.1 - - [02/Aug/2026 08:25:27] "[35m[1mPOST /api/order HTTP/1.1[0m" 201 -
+2026-08-04 07:39:39,862 - INFO - ✅ پایگاه داده آماده است
+2026-08-04 07:39:39,878 - INFO - 🚀 سرور روی پورت 5050 شروع می‌شود...
+2026-08-04 07:39:40,120 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://192.168.1.102:5050
+2026-08-04 07:39:40,120 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-04 07:39:41,298 - INFO - ✅ رابط کاربری راه‌اندازی شد
+2026-08-04 17:27:54,958 - INFO - ✅ پایگاه داده آماده است
+2026-08-04 17:27:55,011 - INFO - 🚀 سرور روی پورت 5050 شروع می‌شود...
+2026-08-04 17:27:57,573 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://192.168.1.102:5050
+2026-08-04 17:27:57,573 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-04 17:28:04,743 - INFO - ✅ رابط کاربری راه‌اندازی شد
+2026-08-05 07:39:03,738 - INFO - ✅ پایگاه داده آماده است
+2026-08-05 07:39:03,803 - INFO - 🚀 سرور روی پورت 5050 شروع می‌شود...
+2026-08-05 07:39:05,353 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://192.168.1.102:5050
+2026-08-05 07:39:05,353 - INFO - [33mPress CTRL+C to quit[0m
+2026-08-05 07:39:05,507 - INFO - ✅ رابط کاربری راه‌اندازی شد
